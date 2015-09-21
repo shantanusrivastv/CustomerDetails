@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="jumbotron">
+    <h2>Home Screen</h2>
+</div>
+<div class="row">
+    <div class="col-md-8">
+        <h2>Welcome to Customer Details</h2>
+        <p>
+            Please click on the link below to navigate to customer details Screen
+        </p>
+        <p>
+            @Html.ActionLink("See the Customers", "Index", "Customer", null, new { @class = "btn btn-success" })
+        </p>
+        
+    </div>
+
+</div>
