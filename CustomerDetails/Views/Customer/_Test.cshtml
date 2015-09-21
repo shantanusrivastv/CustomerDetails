@@ -1,0 +1,42 @@
+﻿@model CustomerDetails.Models.CustomerShortInfo
+
+
+
+        @*<div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Customer Details</h4>
+        </div>*@
+
+        @*<div class="modal-body">
+            <button type="submit" class="bv-hidden-submit" style="display: none; width: 0px; height: 0px;"></button>
+            <div class="table-responsive">*@
+                <table class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Id</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(model => model.Name)
+                            <td>
+                                @Html.DisplayFor(model => model.ICustomer)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.CreationDate)
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+       
+
+
+        

@@ -1,0 +1,132 @@
+﻿@model IEnumerable<CustomerDetails.PortaCustomerShortInfo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Customer</h2>
+
+
+<table data-toggle="table" data-row-style="rowStyle" data-height="299" data-sort-name="name" data-sort-order="desc" class="table table-bordered table-condensed table-hover">
+    <thead>
+        <tr>
+            <th data-field="name" data-halign="center" data-align="left">
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th data-field="Id" data-align="left" data-sortable="true">
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th data-field="link" data-align="left" data-sortable="true">
+                @Html.Display("Links")
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr data-toggle="modal" data-target="#orderModal">
+                @*<tr>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+
+                <td>
+                    @Html.ActionLink("GetCustomer", "GetCustomer", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </tbody>
+
+</table>
+
+<div class="modal fade" id="orderModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                <button type="submit" class="bv-hidden-submit" style="display: none; width: 0px; height: 0px;"></button>                
+                    <div class="table-responsive">
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Id</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="text-info">
+                                            <b>Your Name</b>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-info">
+                                            <b> Your ID</b>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-info">
+                                            Your Email
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-info">
+                                            YOu Phone NO
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                
+
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primar" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section JavaScript
+{
+    @*<script type="text/javascript" src="@Url.Content("~/Scripts/farbtastic/myScript.js")"></script>*@
+    <script type="text/javascript" language="javascript">
+
+        $(function () {
+
+            $('#orderModal').modal({
+                keyboard: true,
+                backdrop: "static",
+                show: false,
+
+            }).on('show', function () {
+                var getIdFromRow = $(event.target).closest('tr').data('id');
+                //make your ajax call populate items or what even you need
+                //$(this).find('#orderDetails').html($('<b> Order Id selected: ' + getIdFromRow + '</b>'))
+            });
+        });
+
+    </script>
+
+}
+
+@section CSS
+{
+    @*<link href="@Url.Content("~/Scripts/farbtastic/farbtastic.css")" rel="stylesheet" type="text/css" />*@
+}

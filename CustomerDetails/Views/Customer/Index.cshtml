@@ -1,0 +1,89 @@
+﻿@model IEnumerable<CustomerDetails.Models.CustomerShortInfo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Customer</h2>
+
+
+
+<table id="myTable" data-toggle="table" data-row-style="rowStyle" data-height="299" data-sort-name="name"
+       data-sort-order="desc" class="table table-bordered table-condensed table-hover"
+       data-page-list="[5, 10, 20, 50, 100, 200]" data-search="true">
+    <thead>
+        <tr>
+            <th data-field="name" data-halign="center" data-align="left">
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th data-field="Id" data-align="left" data-sortable="true">
+                @Html.DisplayName("Customer ID")
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr data-toggle="modal" data-target="#myModal">
+                @*<tr>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ICustomer)
+                </td>
+            </tr>
+        }
+
+    </tbody>
+
+</table>
+
+
+<div class="table-responsive">
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Customer Details</h4>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section JavaScript
+{
+
+    <script type="text/javascript" language="javascript">
+
+        $(document).ready(function () {
+
+            $('#myTable').dataTable();
+
+            //Attach to row click event get the customer ID and poulate the Modal
+            $('#myTable').on("click", "tr", function () {
+                var id = $(this).children().eq(1)[0].innerText;
+
+                $.get('@Url.Action("GetPartialCustomer", "Customer")', { id: id }, function (view) {
+                    $('#myModal').find('.modal-body').empty().append(view);
+                });
+            });
+
+        });
+    </script>
+
+}
+
+@section CSS
+{
+   @*Add styles to override*@ 
+}
