@@ -1,51 +1,32 @@
-﻿@model CustomerDetails.PortaCustomerShortInfo
+﻿@model CustomerDetails.Models.CustomerShortInfo
 
-<div class="modal fade" id="orderModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-            </div>
+<table class="table table-condensed">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Id</th>
+            <th>Email</th>
+            <th>Phone</th>
+        </tr>
+    </thead>
 
-            <div class="modal-body">
-                <button type="submit" class="bv-hidden-submit" style="display: none; width: 0px; height: 0px;"></button>
-                <div class="table-responsive">
-                    <table class="table table-condensed">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Id</th>
-                                <th>Email</th>
-                                <th>Phone</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <tr>
-                                <td>                                    
-                                    @Html.DisplayFor(model => model.Name)
-                                <td>
-                                    @Html.DisplayFor(model => model.Id)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(model => model.Email)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(model => model.CreationDate)
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+    <tbody>
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.Name)
+            <td>
+                @Html.DisplayFor(model => model.ICustomer)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.email)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.CreationDate)
+            </td>
+        </tr>
+    </tbody>
+</table>
 
 
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primar" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 
