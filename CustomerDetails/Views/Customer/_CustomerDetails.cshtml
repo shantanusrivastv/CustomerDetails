@@ -3,26 +3,30 @@
 <table class="table table-condensed">
     <thead>
         <tr>
-            <th>Name</th>
             <th>Id</th>
+            <th>Name</th>
+            <th>Creation Date</th>
             <th>Email</th>
-            <th>Phone</th>
         </tr>
     </thead>
 
     <tbody>
         <tr>
             <td>
-                @Html.DisplayFor(model => model.Name)
-            <td>
                 @Html.DisplayFor(model => model.ICustomer)
             </td>
             <td>
-                @Html.DisplayFor(model => model.email)
+                @Html.DisplayFor(model => model.Name)
             </td>
             <td>
                 @Html.DisplayFor(model => model.CreationDate)
             </td>
+
+            <td>
+                @Html.DisplayFor(model => model.email)
+            </td>
+
+
         </tr>
     </tbody>
 </table>
